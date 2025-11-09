@@ -28,11 +28,8 @@
 2. Configure python file to db:
 
    host = "localhost",
-
    database = "COMP3005A3Q1", # Update depending on your DB name
-
    user = "postgres",
-
    password = "student", # Update depending on your account password
    port = "5432"
 5. Run python file
