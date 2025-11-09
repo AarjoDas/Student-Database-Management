@@ -12,7 +12,7 @@
 - PostgreSQL
 - Clone repository using:
   ```
-    git clone gttps://github.com/AarjoDas/Student-Database-Management.git
+    git clone https://github.com/AarjoDas/Student-Database-Management.git
   ```
 - Install dependencies in correct directory:
 ```
