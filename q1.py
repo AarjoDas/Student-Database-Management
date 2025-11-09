@@ -1,9 +1,13 @@
+"""
+AUTHOR: AARJO DAS
+"""
+
 import psycopg2
 
-# Connect to the student database
+# Connect to the SQL server
 def connect():
     try:
-        # 
+        # Configuration
         con = psycopg2.connect(
             host = "localhost",
             database = "COMP3005A3Q1", # Update depending on your DB name
@@ -13,27 +17,30 @@ def connect():
         )
         print("Successfully connected to DB")
         return con
+    # Error checking
     except(Exception, psycopg2.Error) as error:
         print("Couldn't connect to DB: ", error)
         return None
 
-# Retrieves all students from DB and prints to console
+# Retrieves all students from DB and prints to terminal
 def getAllStudents(connection):
     print("All students")
     try:
         # Select ALL command
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM students")
+            # Store rows from table
             rows = cursor.fetchall()
             for r in rows:
                 print(r)
+    # Error checking
     except psycopg2.Error as error:
         print("Error printing students: ", error)
 
 # Appends new student to DB
 def addStudent(connection, fname, lname, email, date):
     try:
-        # Add new entry command
+        # INSERT command to add student
         with connection.cursor() as cursor:
             cursor.execute("""INSERT INTO students (first_name, last_name, email, enrollment_date)
                            VALUES(%s,%s,%s,%s)
@@ -45,13 +52,14 @@ def addStudent(connection, fname, lname, email, date):
             newStu = cursor.fetchone()
             print("\nStudent", newStu, "successfully added")
             connection.commit()
-
+    # Error checking
     except psycopg2.Error as e:
         print("Error adding student: ", e)
 
 # Updates email of matching sutdent ID with passed in email
 def updateEmail(connection, sId, email):
     try:
+        # UPDATE command to update student's email
         with connection.cursor() as cursor:
             cursor.execute("""UPDATE students
                            SET email = %s
@@ -63,13 +71,14 @@ def updateEmail(connection, sId, email):
             newStu = cursor.fetchone()
             print("\nStudent email changed: ", newStu)
             connection.commit()
-
+    # Error checking
     except psycopg2.Error as e:
         print("Error updating email: ", e)
 
 # Uses gonerId to ssearch through DB to delete chosen student
 def deleteStudent(connection, gonerId):
     try:
+        # DELETE commeand to delete student
         with connection.cursor() as cursor:
             cursor.execute("""DELETE FROM students 
                            WHERE student_id = %s
@@ -80,11 +89,11 @@ def deleteStudent(connection, gonerId):
             goner = cursor.fetchone()
             print("\nStudent deleted", goner)
             connection.commit()
-
+    # Error checking
     except psycopg2.Error as e:
         print("Error deleting student: ", e)
     
-
+# Function to prompt user perform any CRUD manipulation on DB
 def main():
     num = ""
     # Showing CRUD menu until user chooses to exit
@@ -118,7 +127,9 @@ def main():
 
 
 if __name__ == "__main__":
+    # Connects to server
     global con
     con = connect()
     main()
+    # Closes connection to prevent data leaks
     con.close()
