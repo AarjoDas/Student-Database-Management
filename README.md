@@ -13,8 +13,13 @@ Course: COMP3005
 - Install dependancies in correct directory:
     cd .\Student-Database-Management\
     pip install -r dependancies.txt
+  
 ## Features
-
+- Creates new student in DB
+- Reads all students and lists
+- Updates student email by ID
+- Deletes student information by ID
+  
 ## Running Instructions
 1. Create Database with default sample data (included in p1.sql)
 2. Configure python file to db:
