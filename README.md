@@ -14,10 +14,10 @@
   ```
     git clone gttps://github.com/AarjoDas/Student-Database-Management.git
   ```
-- Install dependancies in correct directory:
+- Install dependencies in correct directory:
 ```
     cd .\Student-Database-Management\
-    pip install -r dependancies.txt
+    pip install -r dependencies.txt
 ```
 ## Features
 - Connects to postgres DB -> `connect()`
