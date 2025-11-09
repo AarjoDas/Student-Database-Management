@@ -27,7 +27,7 @@
 - Deletes student information by ID -> `deleteStudent()`
   
 ## Running Instructions
-1. Create Database with default sample data (included in p1.sql)
+1. Create Database with default sample data (included in q1.sql)
 2. Configure python file to db:
 ```
    host = "localhost",
