@@ -41,4 +41,4 @@
    py q1.py
 ```
 ## Video Demo Link
-[https://youtu.be/QGzsdgwYagA](url)
+https://youtu.be/QGzsdgwYagA
